@@ -181,3 +181,45 @@ hr
     border: solid 1px black;
     width: 80%;
 }
+
+.active-helpers {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+}
+
+.active-helper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+.helpers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.helper-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.helper-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
