@@ -24,7 +24,7 @@ const helperEarnings = [0.1]; // 10% of current Buszonki per click
 
 // Update the coin display
 function updateCoinDisplay() {
-    coinDisplay.textContent = `Buszonki: ${coins} (Buszonki na klikniecie: ${coinsPerClick})`;
+    coinDisplay.textContent = `Buszonki: ${Math.floor(coins)} (Buszonki na klikniecie: ${Math.floor(coinsPerClick)})`;
 }
 
 // Save progress with last online timestamp
@@ -172,21 +172,51 @@ skinImages.forEach((img, index) => {
     });
 });
 
-// Handle food purchases
+// Handle food purchases and quantity logic
 foodItems.forEach((foodItem, index) => {
-    foodItem.addEventListener('click', () => {
-        if (coins >= foodPrices[index]) {
-            coins -= foodPrices[index];
-            foodBuff += foodBuffs[index];
-            calculateCoinsPerClick();
-            alert(`Nakarmiłeś Buszona! dostajesz wiecej Buszonków ${foodBuffs[index]}.`);
+    const buyButton = document.getElementById(`buy-food${index + 1}`);
+    const quantityInput = document.getElementById(`food${index + 1}-quantity`);
+    const maxQuantityDisplay = document.getElementById(`food${index + 1}-max`);
+
+    // Function to update the maximum quantity of food that can be bought
+    function updateMaxQuantity() {
+        const maxQuantity = Math.floor(coins / foodPrices[index]); // Calculate the maximum number of items
+        maxQuantityDisplay.textContent = `Max: ${maxQuantity}`; // Update the max quantity display
+        quantityInput.setAttribute("max", maxQuantity); // Set the max value in the input field
+    }
+
+    // Update max quantity when the page loads and when coins change
+    updateMaxQuantity();
+    
+    // Recalculate max quantity whenever the player has enough coins
+    buyButton.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
+        const totalCost = foodPrices[index] * quantity; // Calculate the total cost
+
+        if (quantity <= 0) {
+            alert("Wpisz dodatnią liczbę!");
+            return;
+        }
+
+        if (coins >= totalCost) {
+            coins -= totalCost; // Deduct the coins for the total cost
+            foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
+            calculateCoinsPerClick(); // Recalculate the coins per click
+            alert(`Nakarmiłeś Buszona! Dostajesz więcej Buszonków: ${foodBuffs[index] * quantity}.`);
             updateCoinDisplay();
             saveProgress();
+            updateMaxQuantity(); // Update the max quantity after purchase
         } else {
-            alert(`Nie masz wystarczająco Buszonków żeby to kupić :(`);
+            alert(`Nie masz wystarczająco Buszonków, żeby to kupić!`);
         }
     });
+
+    // Recalculate max quantity when coins change (if needed)
+    setInterval(updateMaxQuantity, 1000); // Update every second (or whenever you need)
 });
+
+
+
 
 // Initialize the game
 loadProgress();
