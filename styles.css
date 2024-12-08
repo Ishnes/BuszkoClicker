@@ -9,8 +9,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-
 }
 
 /* Logo Styles */
@@ -18,10 +16,10 @@ body {
     text-align: center;
     color: orange;
     margin: 20px;
-	background-color:orange;
-	border-radius:10px;
-	width:500px;
-	color:black;
+    background-color: orange;
+    border-radius: 10px;
+    width: 500px;
+    color: black;
 }
 
 /* Main Clicker Container */
@@ -52,7 +50,7 @@ body {
 
 .clicker:hover {
     cursor: crosshair;
-    transform: scale(1.05); /* Add a hover effect */
+    transform: scale(1.05);
     transition: transform 0.2s;
 }
 
@@ -112,17 +110,17 @@ body {
 /* Skin Section */
 .skins {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
-    flex-wrap: wrap;
     margin-top: 20px;
 }
 
 .skin-item {
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 5px;
 }
@@ -134,20 +132,20 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s, opacity 0.2s;
-    opacity: 0.5; /* Default to locked state */
+    opacity: 0.5;
 }
 
 .skin-item img:hover {
-    transform: scale(1.1); /* Zoom effect on hover */
+    transform: scale(1.1);
 }
 
 .skin-item img.active {
-    border-color: gold; /* Highlight active skin */
-    opacity: 1; /* Fully visible */
+    border-color: gold;
+    opacity: 1;
 }
 
 .skin-item img.unlocked {
-    opacity: 1; /* Fully visible if unlocked */
+    opacity: 1;
     cursor: pointer;
 }
 
@@ -177,7 +175,3 @@ body {
 #resetButton:hover {
     background-color: orangered;
 }
-
-
-
-

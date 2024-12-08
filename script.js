@@ -4,7 +4,7 @@ let baseCoinsPerClick = 1;
 let coinsPerClick = baseCoinsPerClick;
 let foodBuff = 0;
 let currentSkin = 0;
-let unlockedSkins = [true, false, false, false];
+let unlockedSkins = [true, false, false, false, false, false, false];
 
 // DOM Elements
 const coinDisplay = document.querySelector('.coiny');
@@ -13,14 +13,14 @@ const foodItems = document.querySelectorAll('.food-item');
 const skinImages = document.querySelectorAll('.skins .skin-item img');
 const resetButton = document.getElementById('resetButton');
 
-const skinPrices = [0, 750, 5000, 20000];
-const skinMultipliers = [1, 2, 5, 10];
+const skinPrices = [0, 750, 5000, 20000, 6900000, 100000000, 69000000000000000];
+const skinMultipliers = [1, 2, 5, 10, 55, 100, 500];
 const foodPrices = [25, 250];
 const foodBuffs = [2, 10];
 
 // Update the coin display
 function updateCoinDisplay() {
-    coinDisplay.textContent = `Buszonki: ${coins}`;
+    coinDisplay.textContent = `Buszonki: ${coins} (Buszonki na klikniecie: ${coinsPerClick})`;
 }
 
 // Save progress
@@ -44,7 +44,7 @@ function loadProgress() {
         baseCoinsPerClick = progress.baseCoinsPerClick || 1;
         foodBuff = progress.foodBuff || 0;
         currentSkin = progress.currentSkin || 0;
-        unlockedSkins = progress.unlockedSkins || [true, false, false, false];
+        unlockedSkins = progress.unlockedSkins || [true, false, false, false, false, false, false];
         applySkin(currentSkin);
         updateCoinDisplay();
         updateSkinUI();
@@ -59,9 +59,9 @@ function resetProgress() {
         coinsPerClick = baseCoinsPerClick;
         foodBuff = 0;
         currentSkin = 0;
-        unlockedSkins = [true, false, false, false];
+        unlockedSkins = [true, false, false, false, false, false, false];
         saveProgress();
-        loadProgress(); // Refresh UI after resetting
+        loadProgress();
         alert("Postęp zresetowany!");
     }
 }
