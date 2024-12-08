@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Buszko Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="logo">
+        <h1>Buszko Clicker</h1>
+    </div>
+    <div class="BuszkoClicker">
+        <div class="coiny">Buszonki: 0</div>
+        
+        <div class="Buszko">
+            <img src="buszon.png" alt="Buszko" class="clicker" id="buszko" draggable="false">
+        </div>
+        
+        <div class="sklep">
+            <h2>Sklep</h2>
+            <h3>Ulepszenia</h3>
+            <div class="food-item" draggable="true" id="food">
+                <img src="sausage.jpg" alt="Kabanosy"> 
+                <span>Kabanosy [25 Buszonki] Buszonki +2</span>
+            </div>
+            <div class="food-item" draggable="true" id="food">
+                <img src="bulka.png" alt="Kabanosy"> 
+                <span>Bułka z masłem [250 Buszonki] Buszonki +10</span>
+            </div>
+            <h3>Skiny</h3>
+            <div class="skins">
+                <div class="skin-item">
+                    <img src="buszon.png" alt="Default Skin" title="Default">
+                    <p class="price">Domyślny Buszko</p>
+                </div>
+                <div class="skin-item">
+                    <img src="buszko.png" alt="First Skin" title="First Skin">
+                    <p class="price">750 Buszonków (Buszonki razy 2)</p>
+                </div>
+                <div class="skin-item">
+                    <img src="seba.png" alt="Second Skin" title="Second Skin">
+                    <p class="price">5000 Buszonków (Buszonki razy 5)</p>
+                </div>
+                <div class="skin-item">
+                    <img src="sheison.png" alt="Third Skin" title="Third Skin">
+                    <p class="price">20000 Buszonków (Buszonki razy 10)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reset Button -->
+    <div class="reset-container">
+        <button id="resetButton">Reset Postępu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

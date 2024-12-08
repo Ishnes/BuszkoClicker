@@ -1,0 +1,179 @@
+/* General Styles */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+/* Logo Styles */
+.logo {
+    text-align: center;
+    color: orange;
+    margin: 20px;
+}
+
+/* Main Clicker Container */
+.BuszkoClicker {
+    text-align: center;
+    width: 100%;
+}
+
+/* Coin Display */
+.coiny {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Buszko Clicker */
+.Buszko {
+    margin-top: 20px;
+}
+
+.clicker {
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.clicker:hover {
+    cursor: crosshair;
+    transform: scale(1.05); /* Add a hover effect */
+    transition: transform 0.2s;
+}
+
+/* Shop Section */
+.sklep {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    height: auto;
+    width: 500px;
+    background-color: orange;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sklep h2, .sklep h3 {
+    margin: 10px 0;
+}
+
+/* Food Item Styling */
+.food-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: grab;
+    gap: 10px;
+}
+
+.food-item img {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.food-item span {
+    font-size: 14px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.food-item:active {
+    cursor: grabbing;
+}
+
+/* Skin Section */
+.skins {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.skin-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.skin-item img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.5; /* Default to locked state */
+}
+
+.skin-item img:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.skin-item img.active {
+    border-color: gold; /* Highlight active skin */
+    opacity: 1; /* Fully visible */
+}
+
+.skin-item img.unlocked {
+    opacity: 1; /* Fully visible if unlocked */
+    cursor: pointer;
+}
+
+.price {
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.reset-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#resetButton {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#resetButton:hover {
+    background-color: orangered;
+}
+
+
+
+
