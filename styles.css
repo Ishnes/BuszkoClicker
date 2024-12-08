@@ -18,6 +18,10 @@ body {
     text-align: center;
     color: orange;
     margin: 20px;
+	background-color:orange;
+	border-radius:10px;
+	width:500px;
+	color:black;
 }
 
 /* Main Clicker Container */
