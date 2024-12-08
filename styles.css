@@ -175,3 +175,9 @@ body {
 #resetButton:hover {
     background-color: orangered;
 }
+
+hr
+{
+    border: solid 1px black;
+    width: 80%;
+}
