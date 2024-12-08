@@ -268,3 +268,8 @@ hr {
     height: 60px;
     border-radius: 50%;
 }
+img
+{
+    max-width: 300px;
+    max-height: 300px;
+}
