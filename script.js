@@ -15,8 +15,8 @@ const resetButton = document.getElementById('resetButton');
 
 const skinPrices = [0, 750, 5000, 20000, 6900000, 100000000, 69000000000000000];
 const skinMultipliers = [1, 2, 5, 10, 55, 100, 500];
-const foodPrices = [25, 250];
-const foodBuffs = [2, 10];
+const foodPrices = [100, 2500, 100000];
+const foodBuffs = [5, 25, 100];
 
 // Update the coin display
 function updateCoinDisplay() {
