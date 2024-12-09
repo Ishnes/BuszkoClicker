@@ -7,7 +7,6 @@ let currentSkin = 0;
 let unlockedSkins = [true, false, false, false, false, false, false];
 let activeHelpers = [false]; // Ensure this is initialized
 
-
 // DOM Elements
 const coinDisplay = document.querySelector('.coiny');
 const clickerImage = document.getElementById('buszko');
@@ -81,16 +80,11 @@ function loadProgress() {
     }
 }
 
-
-
 // Initialize the game
 loadProgress();
 
 // Save progress periodically to track the last online time
 setInterval(saveProgress, 10000); // Save every 10 seconds
-
-
-
 
 // Reset all progress
 function resetProgress() {
@@ -117,7 +111,6 @@ function resetProgress() {
         alert("Postęp zresetowany!");
     }
 }
-
 
 // Buszko click handler
 function clickBuszko() {
@@ -215,18 +208,11 @@ foodItems.forEach((foodItem, index) => {
     setInterval(updateMaxQuantity, 1000); // Update every second (or whenever you need)
 });
 
-
-
-
-// Initialize the game
-loadProgress();
-
 // Event listener for Buszko click
 clickerImage.addEventListener('click', clickBuszko);
 
 // Event listener for Reset Button
 resetButton.addEventListener('click', resetProgress);
-
 
 // Start a helper's autoclick
 function startHelper(index) {
@@ -239,7 +225,6 @@ function startHelper(index) {
         }
     }, 1000); // Autoclick every second
 }
-
 
 // Purchase a helper
 function purchaseHelper(index) {
@@ -263,8 +248,6 @@ function purchaseHelper(index) {
     }
 }
 
-
-
 // Show helper displays only if they exist
 activeHelpers.forEach((isActive, index) => {
     const helperDisplay = document.getElementById(`helperDisplay${index + 1}`);
@@ -273,10 +256,89 @@ activeHelpers.forEach((isActive, index) => {
     }
 });
 
-
-
-
 // Add event listeners for helpers
 document.querySelectorAll('.helper-item').forEach((helperItem, index) => {
     helperItem.addEventListener('click', () => purchaseHelper(index));
+});
+
+// Song Data: Updated Prices and States
+const songs = [
+    { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
+    { id: 'song2', cost: 99999999999999999, src: 'enemy.mp3', unlocked: false },
+];
+
+// Track Currently Playing Audio and Its ID
+let currentAudio = null;
+let currentSongId = null;
+
+// Function to Unlock Songs
+function unlockSong(song) {
+    if (coins >= song.cost && !song.unlocked) {
+        coins -= song.cost;
+        song.unlocked = true;
+
+        const songImage = document.getElementById(song.id);
+        songImage.classList.remove('locked');
+        songImage.classList.add('unlocked');
+        songImage.title = "Kliknij żeby odtworzyć";
+
+        alert(`Unlocked "${song.id}"!`);
+        updateCoinDisplay();
+        saveProgress();
+    } else if (song.unlocked) {
+        alert("Już to odblokowałeś!");
+    } else {
+        alert("Nie masz wystarczająco Buszonków, żeby to kupić!");
+    }
+}
+
+// Function to Play or Stop a Song
+function toggleSongPlayback(song) {
+    if (!song.unlocked) {
+        alert("Musisz najpierw odblokować to");
+        return;
+    }
+
+    if (currentAudio && currentSongId === song.id) {
+        // Stop the current song
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+        currentSongId = null;
+        alert(`Zatrzymano "${song.id}".`);
+    } else {
+        // Stop any playing audio
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+
+        // Play the selected song
+        currentAudio = new Audio(song.src);
+        currentAudio.loop = true;
+        currentAudio.play();
+        currentSongId = song.id;
+        alert(`Odtwarzanie "${song.id}"!`);
+    }
+}
+
+// Add Event Listeners for Song Images
+songs.forEach(song => {
+    const songImage = document.getElementById(song.id);
+
+    // Handle Click
+    songImage.addEventListener('click', () => {
+        if (!song.unlocked) {
+            unlockSong(song);
+        } else {
+            toggleSongPlayback(song);
+        }
+    });
+
+    // Update Initial Locked State
+    if (!song.unlocked) {
+        songImage.classList.add('locked');
+    } else {
+        songImage.classList.add('unlocked');
+    }
 });

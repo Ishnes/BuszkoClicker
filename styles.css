@@ -269,6 +269,16 @@ hr {
     border-radius: 50%;
 }
 
+.song-image.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.song-image.unlocked {
+    opacity: 1;
+    cursor: pointer;
+}
+
 img
 {
     max-width: 300px;
