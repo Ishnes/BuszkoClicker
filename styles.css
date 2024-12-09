@@ -1,19 +1,15 @@
-/* Resetowanie podstawowych stylów */
+/* Resetting basic styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Tło i czcionki */
+/* Body styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    text-align: center;
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+    background-color: black;  /* Set a single background-color */
+    color: white;             /* Set a single color */
     margin: 0;
     padding: 0;
     display: flex;
@@ -54,7 +50,6 @@ body {
     color: white;
     overflow-y: auto;
     max-height: 500px;
-    align-self: flex-start;
 }
 
 .leaderboard h2 {
@@ -135,7 +130,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    align-self: flex-start;
 }
 
 .sklep h2, .sklep h3 {
@@ -209,11 +203,6 @@ body {
 
 .food-item button.buy-food:active {
     transform: scale(1);
-}
-
-/* Reset Button */
-.reset-container {
-    margin-top: 20px;
 }
 
 #resetButton {
