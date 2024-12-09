@@ -1,5 +1,16 @@
-/* General Styles */
+/* Resetowanie podstawowych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tło i czcionki */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
     background-color: black;
     color: white;
     font-family: Arial, sans-serif;
