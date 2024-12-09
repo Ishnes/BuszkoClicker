@@ -205,6 +205,11 @@ body {
     transform: scale(1);
 }
 
+/* Reset Button */
+.reset-container {
+    margin-top: 20px;
+}
+
 #resetButton {
     padding: 10px 20px;
     background-color: orange;
@@ -218,4 +223,108 @@ body {
 
 #resetButton:hover {
     background-color: orangered;
+}
+
+/* New Styles for elements that don't have styles yet */
+
+/* Login/Signup/Logout Buttons */
+#loginButton, #signupButton, #logoutButton {
+    background-color: orange;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#loginButton:hover, #signupButton:hover, #logoutButton:hover {
+    background-color: orangered;
+}
+
+/* Helper Images */
+.active-helpers img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Helper Item Styling */
+.helper-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.helper-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.helper-item span {
+    flex-grow: 1;
+    font-size: 14px;
+    color: orange;
+}
+
+/* Skin Item Styling */
+.skin-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.skin-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.skin-item p.price {
+    color: orange;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Song Item Styling */
+.songs-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.songs-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.songs-item p.price {
+    color: orange;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Locked Song Styling */
+.songs-item.locked {
+    opacity: 0.5;
+    pointer-events: none;
 }
