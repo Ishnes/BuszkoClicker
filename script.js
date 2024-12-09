@@ -14,8 +14,8 @@ const foodItems = document.querySelectorAll('.food-item');
 const skinImages = document.querySelectorAll('.skins .skin-item img');
 const resetButton = document.getElementById('resetButton');
 
-const skinPrices = [0, 750, 20000, 100000, 690000, 100000000, 69000000000000000];
-const skinMultipliers = [1, 2, 5, 10, 55, 100, 500];
+const skinPrices = [0, 750, 20000, 100000, 690000, 100000000, 420000000000, 69000000000000000, 999999999999999999];
+const skinMultipliers = [1, 2, 5, 10, 55, 100, 420, 696, 1000];
 const foodPrices = [100, 2500, 100000, 4444444, 240000000, 5600000000];
 const foodBuffs = [5, 25, 100, 444, 975, 1650];
 const helperPrices = [125000];
