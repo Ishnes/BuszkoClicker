@@ -14,10 +14,10 @@ const foodItems = document.querySelectorAll('.food-item');
 const skinImages = document.querySelectorAll('.skins .skin-item img');
 const resetButton = document.getElementById('resetButton');
 
-const skinPrices = [0, 750, 5000, 20000, 6900000, 100000000, 69000000000000000];
+const skinPrices = [0, 750, 20000, 100000, 690000, 100000000, 69000000000000000];
 const skinMultipliers = [1, 2, 5, 10, 55, 100, 500];
-const foodPrices = [100, 2500, 100000, 44444444, 240000000, 5600000000];
-const foodBuffs = [5, 25, 100, 444, 890, 1650];
+const foodPrices = [100, 2500, 100000, 4444444, 240000000, 5600000000];
+const foodBuffs = [5, 25, 100, 444, 975, 1650];
 const helperPrices = [125000];
 const helperEarnings = [0.1]; // 10% of current Buszonki per click
 
