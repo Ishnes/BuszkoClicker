@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Buszko Clicker</title>
     <link rel="stylesheet" href="styles.css">
+	<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 </head>
 <body>
     <div class="logo">
@@ -11,16 +14,36 @@
         <h5>Pre-alpha.v.0.4</h5>
     </div>
     <div class="BuszkoClicker">
+             <div class="leaderboard">
+						<!-- Button for login -->
+			<button id="loginButton">Zaloguj się</button>
+			<button id="signupButton">Zarejestruj się</button>
+			<button id="logoutButton">Wyloguj się</button>
+
+			<!-- Display the leaderboard -->
+			<div class="leaderboard">
+				<h2>Leaderboard</h2>
+				<table>
+					<tr>
+						<th>Nick</th>
+						<th>Buszonki</th>
+					</tr>
+					<!-- Wyniki będą dynamicznie dodawane tutaj -->
+				</table>
+			</div>
+        </div>
+
+        <div class="game-area">
             <div class="info">
                 <div class="coiny">Buszonki: 0</div>
-                
             </div>
-        
-        <div class="Buszko">
-            <div class="active-helpers">
-                <img id="helperDisplay1" class="active-helper hidden" src="Pies.png" alt="Active Kot">
+
+            <div class="Buszko">
+                <div class="active-helpers">
+                    <img id="helperDisplay1" class="active-helper hidden" src="Pies.png" alt="Active Kot">
+                </div>
+                <img src="buszon.png" alt="Buszko" class="clicker" id="buszko" draggable="false">
             </div>
-            <img src="buszon.png" alt="Buszko" class="clicker" id="buszko" draggable="false">
         </div>
         
         <div class="sklep">
