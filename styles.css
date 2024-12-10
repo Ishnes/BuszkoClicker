@@ -275,12 +275,16 @@ hr {
 .song-image.locked {
     opacity: 0.5;
     cursor: not-allowed;
+    filter: grayscale(100%);
 }
 
 .song-image.unlocked {
     opacity: 1;
     cursor: pointer;
+    filter: none;
 }
+
+
 
 img
 {

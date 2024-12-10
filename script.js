@@ -273,24 +273,35 @@ const songs = [
 let currentAudio = null;
 let currentSongId = null;
 
+// Function to Update the UI for Locked/Unlocked Songs
+function updateSongUI(song) {
+    const songImage = document.getElementById(song.id);
+    if (song.unlocked) {
+        songImage.classList.remove('locked');
+        songImage.classList.add('unlocked');
+        songImage.title = "Kliknij żeby odtworzyć";
+    } else {
+        songImage.classList.remove('unlocked');
+        songImage.classList.add('locked');
+        songImage.title = `Locked: ${song.cost} Buszonki`;
+    }
+}
+
 // Function to Unlock Songs
 function unlockSong(song) {
     if (coins >= song.cost && !song.unlocked) {
         coins -= song.cost;
         song.unlocked = true;
 
-        const songImage = document.getElementById(song.id);
-        songImage.classList.remove('locked');
-        songImage.classList.add('unlocked');
-        songImage.title = "Kliknij żeby odtworzyć";
+        updateSongUI(song);
 
-        alert(`Unlocked "${song.id}"!`);
+        alert(`Odblokowałeś "${song.id}"!`);
         updateCoinDisplay();
         saveProgress();
     } else if (song.unlocked) {
-        alert("Już to odblokowałeś!");
+        alert("Już odblokowałeś tę piosenkę!");
     } else {
-        alert("Nie masz wystarczająco Buszonków, żeby to kupić!");
+        alert("Nie masz wystarczająco Buszonków, żeby odblokować!");
     }
 }
 
@@ -302,20 +313,17 @@ function toggleSongPlayback(song) {
     }
 
     if (currentAudio && currentSongId === song.id) {
-        // Stop the current song
         currentAudio.pause();
         currentAudio.currentTime = 0;
         currentAudio = null;
         currentSongId = null;
         alert(`Zatrzymano "${song.id}".`);
     } else {
-        // Stop any playing audio
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
 
-        // Play the selected song
         currentAudio = new Audio(song.src);
         currentAudio.loop = true;
         currentAudio.play();
@@ -324,11 +332,14 @@ function toggleSongPlayback(song) {
     }
 }
 
-// Add Event Listeners for Song Images
+// Event Listeners - For UI Interaction
 songs.forEach(song => {
     const songImage = document.getElementById(song.id);
 
-    // Handle Click
+    // Update initial locked/unlocked state on page load
+    updateSongUI(song);
+
+    // Handle click events for unlocking or toggling playback
     songImage.addEventListener('click', () => {
         if (!song.unlocked) {
             unlockSong(song);
@@ -336,11 +347,6 @@ songs.forEach(song => {
             toggleSongPlayback(song);
         }
     });
-
-    // Update Initial Locked State
-    if (!song.unlocked) {
-        songImage.classList.add('locked');
-    } else {
-        songImage.classList.add('unlocked');
-    }
 });
+
+
