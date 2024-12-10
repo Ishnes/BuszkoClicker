@@ -26,7 +26,7 @@ function updateCoinDisplay() {
     coinDisplay.textContent = `Buszonki: ${Math.floor(coins)} (Buszonki na klikniecie: ${Math.floor(coinsPerClick)})`;
 }
 
-// Save progress with last online timestamp
+// Save progress including song unlock states
 function saveProgress() {
     const progress = {
         coins,
@@ -36,11 +36,12 @@ function saveProgress() {
         unlockedSkins,
         activeHelpers, // Save active helpers state
         lastOnline: Date.now(), // Save the current timestamp
+        songs: songs.map(song => ({ id: song.id, unlocked: song.unlocked })) // Save song unlock states
     };
     localStorage.setItem('buszkoClickerProgress', JSON.stringify(progress));
 }
 
-// Load progress
+// Load progress including song unlock states
 function loadProgress() {
     const savedProgress = localStorage.getItem('buszkoClickerProgress');
     if (savedProgress) {
@@ -60,6 +61,24 @@ function loadProgress() {
             if (isActive) {
                 const earnings = coinsPerClick * helperEarnings[index] * timeElapsed;
                 coins += earnings;
+            }
+        });
+
+        // Restore song unlock states
+        progress.songs.forEach(savedSong => {
+            const song = songs.find(s => s.id === savedSong.id);
+            if (song) {
+                song.unlocked = savedSong.unlocked;
+
+                // Update the UI for the song
+                const songImage = document.getElementById(song.id);
+                if (song.unlocked) {
+                    songImage.classList.remove('locked');
+                    songImage.classList.add('unlocked');
+                    songImage.title = "Kliknij żeby odtworzyć";
+                } else {
+                    songImage.classList.add('locked');
+                }
             }
         });
 
