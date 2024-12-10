@@ -234,12 +234,18 @@ hr {
     position: absolute;
     top: 50%;
     left: 60%;
-    transform: translate(-10%, -50%);
+    transform: translate(100%, -50%);
     display: flex;
     gap: 10px;
 }
 
 .active-helper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.active-helper2 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -288,4 +294,30 @@ img
 {
     max-width: 300px;
     max-height: 300px;
+}
+
+/* Responsive Styles */
+@media (max-width: 400px) {
+    .logo {
+        width: 100%;
+    }
+
+    .clicker {
+        width: 200px;
+        height: 200px;
+    }
+
+    .food-item {
+        gap: 5px;
+    }
+
+    .sklep {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .skin-item img {
+        width: 60px;
+        height: 60px;
+    }
 }
