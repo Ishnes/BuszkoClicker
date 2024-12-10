@@ -24,7 +24,7 @@ const helperEarnings = [0.1]; // 10% of current Buszonki per click
 
 // Song Data
 const songs = [
-    { id: 'song1', cost: 10000, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
+    { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
     { id: 'song2', cost: 999999999999, src: 'enemy.mp3', unlocked: false },
 ];
 
