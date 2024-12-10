@@ -264,7 +264,7 @@ document.querySelectorAll('.helper-item').forEach((helperItem, index) => {
 // Song Data: Updated Prices and States
 const songs = [
     { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
-    { id: 'song2', cost: 99999999999999999, src: 'enemy.mp3', unlocked: false },
+    { id: 'song2', cost: 999, src: 'enemy.mp3', unlocked: false },
 ];
 
 // Track Currently Playing Audio and Its ID
