@@ -81,6 +81,14 @@ body {
     margin: 10px 0;
 }
 
+.buy-food
+{
+	position: absolute;
+	left:53%;
+	margin-top:5%;
+	
+}
+
 /* Food Item Styling */
 .food-item {
     display: flex;
@@ -374,7 +382,14 @@ img
     transform: translate(100%, -50%);
     display: flex;
     gap: 10px;
-}
+	}
+	.buy-food
+	{
+	position: absolute;
+	left:60%;
+	margin-top:20%;
+	
+	}
 	
 	
 }
