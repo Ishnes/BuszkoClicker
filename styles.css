@@ -223,12 +223,6 @@ body {
     background-color: orangered;
 }
 
-#klik {
-    width: 100px;
-    height: 100px;
-    touch-action: manipulation; /* Zapobiega niepożądanym gestom */
-    cursor: pointer;
-}
 
 
 hr {

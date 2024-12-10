@@ -21,14 +21,6 @@ const foodBuffs = [5, 25, 100, 444, 975, 1650];
 const helperPrices = [125000];
 const helperEarnings = [0.1]; // 10% of current Buszonki per click
 
-document.getElementById('klik').addEventListener('touchstart', function(event) {
-    event.preventDefault(); // Zapobiega domyślnemu powiększaniu
-    klik(); // Funkcja obsługująca kliknięcie
-});
-
-document.addEventListener('dblclick', function(event) {
-    event.preventDefault();
-});
 
 
 // Update the coin display
