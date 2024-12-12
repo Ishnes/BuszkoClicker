@@ -175,16 +175,31 @@
         </div>
     </div>
 
-    <div class="leaderboard">
-        Leaderboard wkrótce...
-    </div>
+    <section class="leaderboard">
+        <h3>Leaderboard</h3>
+        <input type="text" id="playerNick" placeholder="Wprowadź swój nick">
+        <button id="submitNick">Zapisz Nick</button>
+        <table id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Nick</th>
+                    <th>Buszonki</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamiczne dane -->
+            </tbody>
+        </table>
+    </section>
+
 
     <!-- Reset Button -->
     <div class="reset-container">
         <button id="resetButton">Reset Postępu</button>
     </div>
 
-    <script src="script.js"></script>
-    <script src="script2.js"></script>
+    
+	<script type="module" src="script.js"></script>
+    <script src="script2.js" ></script>
 </body>
 </html>

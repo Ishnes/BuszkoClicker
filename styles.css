@@ -178,6 +178,7 @@ body {
 }
 
 .skin-item {
+    width: 300px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -444,6 +445,42 @@ img
 /* Ukryte sekcje */
 .hidden {
     display: none;
+}
+
+.leaderboard {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #673ab7;
+}
+
+#leaderboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#leaderboardTable th, #leaderboardTable td {
+    border: 1px solid #673ab7;
+    padding: 8px;
+    text-align: left;
+}
+
+#leaderboardTable th {
+    background-color: #1e1e1e;
+}
+
+#playerNick {
+    padding: 8px;
+    margin-right: 10px;
+background-color: lightgray;
+border: 1px solid #673ab7;
+}
+
+#submitNick {
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #673ab7;
+
 }
 
 
