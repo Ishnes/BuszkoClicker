@@ -52,8 +52,12 @@ function formatCoins(value) {
     let zeros = Math.floor(Math.log10(value)); // Liczba zer w liczbie
     let letterIndex = Math.max(0, zeros - 8); // Odliczamy od 100 milionów (8 zer)
 
-    // Litera odpowiadająca liczbie zer
-    const letter = letterIndex < alphabet.length ? alphabet[letterIndex] : '?';
+    // Obsługa wieloliterowych oznaczeń
+    let letter = '';
+    while (letterIndex >= 0) {
+        letter = alphabet[letterIndex % 26] + letter;
+        letterIndex = Math.floor(letterIndex / 26) - 1; // Obsługa kolejnych "cykli"
+    }
 
     // Obliczanie prefiksu (pierwsze 4 cyfry)
     const divisor = Math.pow(10, zeros - 3); // Dzielenie liczby tak, aby 4 cyfry zostały
