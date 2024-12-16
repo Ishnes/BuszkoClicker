@@ -45,6 +45,24 @@ const songs = [
     { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
     { id: 'song2', cost: 99999999999999999, src: 'enemy.mp3', unlocked: false },];
 
+
+function formatCoins(value) {
+    if (value < 100_000_000) return value.toString();
+
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let zeros = Math.floor(Math.log10(value)); // Liczba zer w liczbie
+    let letterIndex = Math.max(0, zeros - 8); // Odliczamy od 100 milionów (8 zer)
+    
+    const letter = letterIndex < alphabet.length ? alphabet[letterIndex] : '?';
+    const prefix = (value / Math.pow(10, zeros)).toFixed(2); // Pierwsze cyfry z 2 miejscami po przecinku
+    
+    return `${prefix}${letter}`;
+}
+
+
+
+
+
 async function getGoogleUserId() {
     const provider = new GoogleAuthProvider();
     try {
@@ -552,9 +570,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }, 30000); // Zmiana na zapis co 30 sekund
 function updateCoinDisplay() {
+    coinDisplay.textContent = formatCoins(coins);
     const safeCoins = Number.isFinite(coins) ? Math.floor(coins) : 0;
     const safeCoinsPerClick = Number.isFinite(coinsPerClick) ? Math.floor(coinsPerClick) : 0;
     coinDisplay.textContent = `Buszonki: ${safeCoins} (Buszonki na kliknięcie: ${safeCoinsPerClick})`;
+   
 
     // Użyj globalnej zmiennej zamiast pola tekstowego
     if (currentNick && currentNick !== "Unknown") {
