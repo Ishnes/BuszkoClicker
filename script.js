@@ -47,17 +47,21 @@ const songs = [
 
 
 function formatCoins(value) {
-    if (value < 100_000_000) return value.toString();
+    if (value < 1_000_000) return value.toString();
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let zeros = Math.floor(Math.log10(value)); // Liczba zer w liczbie
-    let letterIndex = Math.max(0, zeros - 8); // Odliczamy od 100 milionów (8 zer)
+    const base = 100_000_000; // Każde 100 milionów to kolejna litera
+    const index = Math.floor(value / base);
+    const remainder = value % base;
+
+    // Sprawdź, czy indeks mieści się w alfabecie
+    const letter = index < alphabet.length ? alphabet[index - 1] : '?';
     
-    const letter = letterIndex < alphabet.length ? alphabet[letterIndex] : '?';
-    const prefix = (value / Math.pow(10, zeros)).toFixed(2); // Pierwsze cyfry z 2 miejscami po przecinku
-    
+    // Jeśli reszta jest znacząca, pokaż również liczbę przed literą
+    const prefix = Math.floor(value / 1_000_000) % 100;
     return `${prefix}${letter}`;
 }
+
 
 
 
