@@ -349,7 +349,7 @@ img
 
 
 /* Responsive Styles */
-@media (max-width: 400px) {
+@media (max-width: 548px) {
     .skin-item img {
         width: 60px;
         height: 60px;
@@ -363,7 +363,7 @@ img
 
 
 /* Responsive Styles */
-@media (max-width: 400px) {
+@media (max-width: 548px) {
     .logo {
         width: 100%;
     }
@@ -403,9 +403,7 @@ img
 	}
 	
 	.leaderboard{
-	border:2px #673ab7 solid;
 	background-color:#1e1e1e;
-	border-radius:10px;
 	padding: 20px;
 	height: auto;
  	width: 89%;
@@ -421,7 +419,8 @@ img
 }
 
 .tab-button {
-    padding: 10px 20px;
+    width:25%;
+    padding: 5px 5px;
     background-color: #673ab7;
     color: white;
     border: none;
@@ -450,7 +449,6 @@ img
 .leaderboard {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #673ab7;
 }
 
 #leaderboardTable {
@@ -471,16 +469,32 @@ img
 
 #playerNick {
     padding: 8px;
-    margin-right: 10px;
-background-color: lightgray;
+    margin: 10px;
+    color: lightgray;
 border: 1px solid #673ab7;
+background-color: #1e1e1e;
 }
 
 #submitNick {
     padding: 8px;
     cursor: pointer;
     border: 1px solid #673ab7;
+    background-color: #1e1e1e;
+    color: lightgray;
 
 }
 
+.log
+{
+    padding: 8px;
+    margin: 9px;
+    cursor: pointer;
+    border: 1px solid #673ab7;
+    background-color: #1e1e1e;
+    color: lightgray;
+}
 
+#loginButton
+{
+    width: 179.33px;
+}

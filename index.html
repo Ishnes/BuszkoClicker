@@ -9,7 +9,8 @@
 <body>
     <div class="logo">
         <h1>Buszko Clicker</h1>
-        <h5>Pre-alpha.v.0.8</h5>
+        <h5>Pre-alpha.v.0.7</h5>
+	<div id="userInfo"></div>
     </div>
     <div class="BuszkoClicker">
         <div class="info">
@@ -34,6 +35,7 @@
                 <button class="tab-button" id="helpersTab">Pomocnicy</button>
                 <button class="tab-button" id="skinsTab">Skiny</button>
                 <button class="tab-button" id="songsTab">Szafa Grająca</button>
+		<button class="tab-button" id="LeaderboardTab">Tabela Wyników</button>
             </div>
 
             <!-- Sekcje w sklepie -->
@@ -172,25 +174,28 @@
                 </div>
                 </div>
             </div>
+		<div id="leaderboardSection" class="leaderboard tab-section hidden">
+	        <h3>Tabela Wyników</h3>
+		<button id="loginButton" class="log">Zaloguj się przez Google</button>
+		    <br>
+	        <input type="text" id="playerNick" placeholder="Wprowadź swój nick">
+	        <button id="submitNick">Zapisz Nick</button>
+	        <table id="leaderboardTable">
+	            <thead>
+	                <tr>
+	                    <th>Nick</th>
+	                    <th>Buszonki</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <!-- Dynamiczne dane -->
+	            </tbody>
+	        </table>
+	    </div>
         </div>
     </div>
 
-    <section class="leaderboard">
-        <h3>Leaderboard</h3>
-        <input type="text" id="playerNick" placeholder="Wprowadź swój nick">
-        <button id="submitNick">Zapisz Nick</button>
-        <table id="leaderboardTable">
-            <thead>
-                <tr>
-                    <th>Nick</th>
-                    <th>Buszonki</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamiczne dane -->
-            </tbody>
-        </table>
-    </section>
+    
 
 
     <!-- Reset Button -->
