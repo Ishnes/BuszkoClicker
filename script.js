@@ -43,7 +43,7 @@ const helperEarnings = [0.02, 0.05]; // 10% of current Buszonki per click
 const nickInput = document.querySelector('#playerNick');
 const songs = [
     { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
-    { id: 'song2', cost: 99999999999999999, src: 'enemy.mp3', unlocked: false },];
+    { id: 'song2', cost: 9999, src: 'enemy.mp3', unlocked: false },];
 
 function formatCoins(value) {
     if (value < 100_000_000) return value.toString();
