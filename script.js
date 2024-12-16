@@ -574,11 +574,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }, 30000); // Zmiana na zapis co 30 sekund
 function updateCoinDisplay() {
-    coinDisplay.textContent = formatCoins(coins);
     const safeCoins = Number.isFinite(coins) ? Math.floor(coins) : 0;
     const safeCoinsPerClick = Number.isFinite(coinsPerClick) ? Math.floor(coinsPerClick) : 0;
-    coinDisplay.textContent = `Buszonki: ${safeCoins} (Buszonki na kliknięcie: ${safeCoinsPerClick})`;
-   
+
+    // Formatowanie liczb za pomocą funkcji formatCoins
+    const formattedCoins = formatCoins(safeCoins);
+    const formattedCoinsPerClick = formatCoins(safeCoinsPerClick);
+
+    coinDisplay.textContent = `Buszonki: ${formattedCoins} (Buszonki na kliknięcie: ${formattedCoinsPerClick})`;
 
     // Użyj globalnej zmiennej zamiast pola tekstowego
     if (currentNick && currentNick !== "Unknown") {
@@ -591,6 +594,7 @@ function updateCoinDisplay() {
         console.error("Niepoprawny obiekt progress:", progress);
     }
 }
+
 
 document.querySelector("#submitNick").addEventListener("click", () => {
     const nick = nickInput.value.trim();
