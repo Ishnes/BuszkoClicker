@@ -325,14 +325,6 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    // Function to update the maximum quantity of food that can be bought
-    function updateMaxQuantity() {
-        const maxQuantity = Math.floor(coins / foodPrices[index]); // Calculate the maximum number of items
-        maxQuantityDisplay.textContent = `Max: ${maxQuantity}`; // Update the max quantity display
-	    quantityInput.setAttribute("max", maxQuantity); // Set the max value in the input field
-    }
-    // Update max quantity when the page loads and when coins change
-    updateMaxQuantity();
     // Recalculate max quantity whenever the player has enough coins
 	buyButton.addEventListener('click', () => {
         const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
@@ -347,7 +339,6 @@ foodItems.forEach((foodItem, index) => {
             calculateCoinsPerClick(); // Recalculate the coins per click
             updateCoinDisplay();
             saveProgress();
-            updateMaxQuantity(); // Update the max quantity after purchase
 
         } else {
 
