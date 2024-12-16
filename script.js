@@ -325,7 +325,6 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    const maxQuantityDisplay = document.getElementById(`food${index + 1}-max`);
     // Function to update the maximum quantity of food that can be bought
     function updateMaxQuantity() {
         const maxQuantity = Math.floor(coins / foodPrices[index]); // Calculate the maximum number of items
@@ -346,7 +345,6 @@ foodItems.forEach((foodItem, index) => {
             coins -= totalCost; // Deduct the coins for the total cost
             foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
             calculateCoinsPerClick(); // Recalculate the coins per click
-            alert(`Nakarmiłeś Buszona! Dostajesz więcej Buszonków: ${foodBuffs[index] * quantity}.`);
             updateCoinDisplay();
             saveProgress();
             updateMaxQuantity(); // Update the max quantity after purchase
