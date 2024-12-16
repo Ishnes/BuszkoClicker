@@ -47,7 +47,7 @@ const songs = [
 
 
 function formatCoins(value) {
-    if (value < 1_000_000) return value.toString();
+    if (value < 100_000_000) return value.toString();
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const base = 100_000_000; // Każde 100 milionów to kolejna litera
