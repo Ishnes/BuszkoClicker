@@ -34,7 +34,7 @@ const clickerImage = document.getElementById('buszko');
 const foodItems = document.querySelectorAll('.food-item');
 const skinImages = document.querySelectorAll('.skins .skin-item img');
 const resetButton = document.getElementById('resetButton');
-const skinPrices = [0, 7500, 200000, 72000000, 690000000, 2300000000, 420000000000, 69000000000000000, 999999999999999999, 99999999999999999999999999999999];
+const skinPrices = [0, 10000, 200000, 3000000, 40000000, 500000000, 60000000000, 700000000000, 80000000000000, 90000000000000000];
 const skinMultipliers = [1, 2, 5, 10, 55, 100, 420, 696, 1000, 9999];
 const foodPrices = [100, 2500, 100000, 4444444, 240000000, 5600000000];
 const foodBuffs = [5, 25, 100, 444, 975, 1650];
@@ -486,10 +486,10 @@ async function saveScoreToFirebase(nick, coins) {
     try {
         const sanitizedId = userId.replace(/\./g, '_'); // Ensure the ID is safe for Firebase
         const userRef = ref(db, `leaderboard/${sanitizedId}`);
-        // Save both nickname and coins in Firebase
+        // Save both nickname and coins (as raw number) in Firebase
         await update(userRef, {
             nick: nick,
-            coins: coins,
+            coins: coins,  // zapisujemy oryginalną liczbę monet
             lastUpdated: Date.now() // Timestamp for last update
         });
         console.log("Dane zapisane w Firebase:", { nick, coins });
@@ -668,8 +668,6 @@ async function saveNickAndCoinsToFirebase(nick) {
             }
         }, 10000);
     });
-    // Inicjalizacja tablicy wyników
-    updateLeaderboard();
 // Funkcja do aktualizacji tablicy wyników
 function updateLeaderboard() {
     const leaderboardRef = ref(db, "leaderboard");
@@ -681,10 +679,13 @@ function updateLeaderboard() {
         if (data) {
             const sortedData = Object.values(data).sort((a, b) => b.coins - a.coins);
             sortedData.forEach((entry) => {
+                const formattedCoins = formatCoins(entry.coins); // Formatowanie monet
                 const row = document.createElement("tr");
-                row.innerHTML = `<td>${entry.nick}</td><td>${entry.coins}</td>`;
+                row.innerHTML = `<td>${entry.nick}</td><td>${formattedCoins}</td>`; // Wyświetlenie sformatowanych monet
                 leaderboardTable.appendChild(row);
             });
         }
     });
 }
+
+updateLeaderboard();
