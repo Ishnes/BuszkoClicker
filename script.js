@@ -37,6 +37,7 @@ const resetButton = document.getElementById('resetButton');
 const skinPrices = [0, 10000, 200000, 3000000, 40000000, 500000000, 60000000000, 700000000000, 80000000000000, 90000000000000000];
 const skinMultipliers = [1, 2, 4, 10, 20, 50, 100, 250, 500, 1000];
 const foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
+const currentFoodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
 const foodBuffs = [1, 5, 10, 25, 100, 250];
 const helperPrices = [125000, 500000];
 const helperEarnings = [0.02, 0.05]; // 10% of current Buszonki per click
@@ -325,23 +326,36 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    // Recalculate max quantity whenever the player has enough coins
-	buyButton.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
-        const totalCost = foodPrices[index] * quantity; // Calculate the total cost
+    
+    buyButton.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value); // Ilość do zakupu
+        let totalCost = 0; // Całkowity koszt zakupu
+
+        // Oblicz koszt z uwzględnieniem rosnących cen
+        for (let i = 0; i < quantity; i++) {
+            totalCost += currentFoodPrices[index] * Math.pow(1.05, i);
+        }
+
+        totalCost = Math.floor(totalCost); // Zaokrąglanie kosztu do pełnych liczb
+
         if (quantity <= 0) {
             alert("Wpisz dodatnią liczbę!");
             return;
         }
+        
         if (coins >= totalCost) {
-            coins -= totalCost; // Deduct the coins for the total cost
-            foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
-            calculateCoinsPerClick(); // Recalculate the coins per click
+            coins -= totalCost; // Odejmij monety za koszt
+            foodBuff += foodBuffs[index] * quantity; // Zastosuj bonus z jedzenia
+
+            // Aktualizacja ceny po każdym zakupie
+            for (let i = 0; i < quantity; i++) {
+                currentFoodPrices[index] = Math.floor(currentFoodPrices[index] * 1.05);
+            }
+
+            calculateCoinsPerClick();
             updateCoinDisplay();
             saveProgress();
-
         } else {
-
             alert(`Nie masz wystarczająco Buszonków, żeby to kupić!`);
         }
     });
