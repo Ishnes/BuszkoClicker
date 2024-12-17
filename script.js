@@ -37,7 +37,6 @@ const resetButton = document.getElementById('resetButton');
 const skinPrices = [0, 10000, 200000, 3000000, 40000000, 500000000, 60000000000, 700000000000, 80000000000000, 90000000000000000];
 const skinMultipliers = [1, 2, 4, 10, 20, 50, 100, 250, 500, 1000];
 const foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
-const currentFoodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
 const foodBuffs = [1, 5, 10, 25, 100, 250];
 const helperPrices = [125000, 500000];
 const helperEarnings = [0.02, 0.05]; // 10% of current Buszonki per click
