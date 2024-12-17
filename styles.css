@@ -1,6 +1,5 @@
 /* General Styles */
 
-
 body {
     background-color: #121212; /* Ciemnoszare tło */
     color: #e0e0e0; /* Jasnoszary tekst */
@@ -12,17 +11,6 @@ body {
     align-items: center;
     justify-content: center;
 	overflow-x: hidden;
-}
-
-#voidCanvas {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
 }
 
 /* Logo Styles */
