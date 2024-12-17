@@ -26,6 +26,22 @@ body {
     border-radius: 10px;
 }
 
+.neon-text {
+            font-family: Arial, sans-serif;
+            font-size: 4rem; /* Rozmiar czcionki */
+            color: #0ff; /* Podstawowy kolor tekstu (turkusowy) */
+            text-shadow: 
+                0 0 5px #0ff, 
+                0 0 10px #0ff, 
+                0 0 20px #0ff, 
+                0 0 40px #0fa, 
+                0 0 80px #0fa, 
+                0 0 90px #0fa, 
+                0 0 100px #0fa; /* Wielopoziomowy cień dla efektu neonu */
+            text-transform: uppercase; /* Tekst dużymi literami */
+            letter-spacing: 5px; /* Rozstawienie liter */
+}
+
 /* Main Clicker Container */
 .BuszkoClicker {
     text-align: center;
