@@ -34,12 +34,28 @@ const clickerImage = document.getElementById('buszko');
 const foodItems = document.querySelectorAll('.food-item');
 const skinImages = document.querySelectorAll('.skins .skin-item img');
 const resetButton = document.getElementById('resetButton');
-const skinPrices = [0, 10000, 200000, 3000000, 40000000, 500000000, 60000000000, 700000000000, 80000000000000, 90000000000000000];
-const skinMultipliers = [1, 2, 4, 10, 20, 50, 100, 250, 500, 1000];
+const skinPrices = 
+[
+    0, 
+    10000, 
+    200000, 
+    3000000, 
+    40000000, 
+    500000000, 
+    60000000000, 
+    700000000000, 
+    80000000000000, 
+    90000000000000000, 
+    10000000000000000000, 
+    11000000000000000000000,
+    120000000000000000000000000,
+    130000000000000000000000000000
+];
+const skinMultipliers = [1, 2, 4, 10, 20, 50, 100, 250, 500, 1000, 1200, 1400, 1600, 1800];
 const foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
 const foodBuffs = [1, 5, 10, 25, 100, 250];
-const helperPrices = [125000, 500000];
-const helperEarnings = [0.02, 0.05]; // 10% of current Buszonki per click
+const helperPrices = [225000, 1000000, 500000000];
+const helperEarnings = [0.01, 0.05, 0.10]; // 10% of current Buszonki per click
 const nickInput = document.querySelector('#playerNick');
 const songs = [
     { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
@@ -325,36 +341,23 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    
-    buyButton.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value); // Ilość do zakupu
-        let totalCost = 0; // Całkowity koszt zakupu
-
-        // Oblicz koszt z uwzględnieniem rosnących cen
-        for (let i = 0; i < quantity; i++) {
-            totalCost += currentFoodPrices[index] * Math.pow(1.05, i);
-        }
-
-        totalCost = Math.floor(totalCost); // Zaokrąglanie kosztu do pełnych liczb
-
+    // Recalculate max quantity whenever the player has enough coins
+	buyButton.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
+        const totalCost = foodPrices[index] * quantity; // Calculate the total cost
         if (quantity <= 0) {
             alert("Wpisz dodatnią liczbę!");
             return;
         }
-        
         if (coins >= totalCost) {
-            coins -= totalCost; // Odejmij monety za koszt
-            foodBuff += foodBuffs[index] * quantity; // Zastosuj bonus z jedzenia
-
-            // Aktualizacja ceny po każdym zakupie
-            for (let i = 0; i < quantity; i++) {
-                currentFoodPrices[index] = Math.floor(currentFoodPrices[index] * 1.05);
-            }
-
-            calculateCoinsPerClick();
+            coins -= totalCost; // Deduct the coins for the total cost
+            foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
+            calculateCoinsPerClick(); // Recalculate the coins per click
             updateCoinDisplay();
             saveProgress();
+
         } else {
+
             alert(`Nie masz wystarczająco Buszonków, żeby to kupić!`);
         }
     });
