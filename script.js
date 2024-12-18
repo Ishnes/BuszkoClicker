@@ -264,7 +264,7 @@ function loadProgress() {
 loadProgress();
 // Reset all progress
 function resetProgress() {
-    if (confirm("Czy jesteś pewnien że chcesz zresetować cały postęp?")) {
+    if (confirm("Czy jesteś pewien, że chcesz zresetować cały postęp?")) {
         // Reset all game state
         localStorage.clear(); // Usuń wszystkie dane z localStorage
         coins = 0;
@@ -274,15 +274,31 @@ function resetProgress() {
         currentSkin = 0;
         unlockedSkins = [true, false, false, false, false, false, false];
         activeHelpers = [false]; // Reset all helpers
-        // Hide all helper displays
-	    document.querySelectorAll('.helper-item').forEach((helperItem, index) => {
+
+        // Reset food prices and buffs
+        const initialFoodPrices = [100, 2500, 10000, 300000, 2500000, 50000000]; // Początkowe ceny
+        foodPrices.forEach((_, index) => {
+            foodPrices[index] = initialFoodPrices[index]; // Przywróć początkowe ceny
+        });
+
+        // Zaktualizuj wyświetlane ceny jedzenia w interfejsie
+        foodItems.forEach((foodItem, index) => {
+            const foodSpan = foodItem.querySelector('span');
+            foodSpan.textContent = `${foodItem.querySelector('img').alt} [${formatCoins(foodPrices[index])} Buszonki] Buszonki +${foodBuffs[index]}`;
+        });
+
+        // Ukryj wszystkie aktywne pomocniki
+        document.querySelectorAll('.helper-item').forEach((helperItem, index) => {
             const helperDisplay = document.getElementById(`helperDisplay${index + 1}`);
             if (helperDisplay) {
-		    helperDisplay.classList.add('hidden');
+                helperDisplay.classList.add('hidden');
             }
         });
+
+        // Zapisz progres w Firebase i załaduj od nowa
         saveProgress();
         loadProgress();
+
         alert("Postęp zresetowany!");
     }
 }
