@@ -271,7 +271,6 @@ function resetProgress() {
         baseCoinsPerClick = 1;
         coinsPerClick = baseCoinsPerClick;
         foodBuff = 0;
-	foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
         currentSkin = 0;
         unlockedSkins = [true, false, false, false, false, false, false];
         activeHelpers = [false]; // Reset all helpers
