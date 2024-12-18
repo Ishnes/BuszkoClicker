@@ -341,23 +341,34 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    // Recalculate max quantity whenever the player has enough coins
-	buyButton.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
-        const totalCost = foodPrices[index] * quantity; // Calculate the total cost
+    
+    // Obsługa zakupu
+    buyButton.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value); // Ilość do zakupu
+        const totalCost = foodPrices[index] * quantity; // Obliczenie kosztu całkowitego
+        
         if (quantity <= 0) {
             alert("Wpisz dodatnią liczbę!");
             return;
         }
+        
         if (coins >= totalCost) {
-            coins -= totalCost; // Deduct the coins for the total cost
-            foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
-            calculateCoinsPerClick(); // Recalculate the coins per click
+            // Aktualizacja stanu gracza
+            coins -= totalCost;
+            foodBuff += foodBuffs[index] * quantity;
+
+            // Zwiększanie ceny jedzenia
+            foodPrices[index] *= Math.pow(1.05, quantity);
+
+            // Aktualizacja wyświetlanej ceny
+            const foodSpan = foodItem.querySelector('span');
+            foodSpan.textContent = `${foodItem.querySelector('img').alt} [${formatCoins(Math.floor(foodPrices[index]))} Buszonki] Buszonki +${foodBuffs[index]}`;
+            
+            // Aktualizacja pozostałych danych
+            calculateCoinsPerClick();
             updateCoinDisplay();
             saveProgress();
-
         } else {
-
             alert(`Nie masz wystarczająco Buszonków, żeby to kupić!`);
         }
     });
