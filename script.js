@@ -205,7 +205,8 @@ function saveProgress() {
         currentSkin,
         unlockedSkins,
         activeHelpers,
-        lastOnline: Date.now()
+        lastOnline: Date.now(),
+        foodPrices, // Zapisujemy aktualne ceny jedzenia
     };
     const sanitizedId = userId.replace(/\./g, '_');
     const userRef = ref(db, `leaderboard/${sanitizedId}`);
@@ -342,32 +343,22 @@ foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
     
-    // Obsługa zakupu
     buyButton.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value); // Ilość do zakupu
-        const totalCost = foodPrices[index] * quantity; // Obliczenie kosztu całkowitego
-        
+        const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
+        const totalCost = foodPrices[index] * quantity; // Calculate the total cost
+
         if (quantity <= 0) {
             alert("Wpisz dodatnią liczbę!");
             return;
         }
-        
+
         if (coins >= totalCost) {
-            // Aktualizacja stanu gracza
-            coins -= totalCost;
-            foodBuff += foodBuffs[index] * quantity;
-
-            // Zwiększanie ceny jedzenia
-            foodPrices[index] *= Math.pow(1.01, quantity);
-
-            // Aktualizacja wyświetlanej ceny
-            const foodSpan = foodItem.querySelector('span');
-            foodSpan.textContent = `${foodItem.querySelector('img').alt} [${formatCoins(Math.floor(foodPrices[index]))} Buszonki] Buszonki +${foodBuffs[index]}`;
-            
-            // Aktualizacja pozostałych danych
-            calculateCoinsPerClick();
+            coins -= totalCost; // Deduct the coins for the total cost
+            foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
+            foodPrices[index] *= 1.05; // Zwiększamy cenę jedzenia o 5%
+            calculateCoinsPerClick(); // Recalculate the coins per click
             updateCoinDisplay();
-            saveProgress();
+            saveProgress(); // Zapisz zmienione dane (w tym ceny jedzenia) w Firebase
         } else {
             alert(`Nie masz wystarczająco Buszonków, żeby to kupić!`);
         }
@@ -534,6 +525,7 @@ async function loadProgressFromFirebase() {
                     currentSkin = savedProgress.currentSkin || 0;
                     unlockedSkins = savedProgress.unlockedSkins || [true, false, false, false, false, false, false];
                     activeHelpers = savedProgress.activeHelpers || [false];
+                    foodPrices = savedProgress.foodPrices || [100, 2500, 10000, 300000, 2500000, 50000000]; // Wczytujemy ceny jedzenia
                     updateUI();
                 }
             } else {
