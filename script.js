@@ -342,7 +342,8 @@ skinImages.forEach((img, index) => {
 foodItems.forEach((foodItem, index) => {
     const buyButton = document.getElementById(`buy-food${index + 1}`);
     const quantityInput = document.getElementById(`food${index + 1}-quantity`);
-    
+    const foodSpan = foodItem.querySelector('span'); // Element, w którym będzie wyświetlana cena
+
     buyButton.addEventListener('click', () => {
         const quantity = parseInt(quantityInput.value); // Get the quantity from the input field
         const totalCost = foodPrices[index] * quantity; // Calculate the total cost
@@ -355,7 +356,11 @@ foodItems.forEach((foodItem, index) => {
         if (coins >= totalCost) {
             coins -= totalCost; // Deduct the coins for the total cost
             foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
-            foodPrices[index] *= 1.01; // Zwiększamy cenę jedzenia o 5%
+            foodPrices[index] *= 1.05; // Zwiększamy cenę jedzenia o 5%
+            
+            // Zaktualizuj wyświetlaną cenę
+            foodSpan.textContent = `${foodItem.querySelector('img').alt} [${formatCoins(Math.floor(foodPrices[index]))} Buszonki] Buszonki +${foodBuffs[index]}`;
+
             calculateCoinsPerClick(); // Recalculate the coins per click
             updateCoinDisplay();
             saveProgress(); // Zapisz zmienione dane (w tym ceny jedzenia) w Firebase
