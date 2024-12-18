@@ -372,7 +372,7 @@ foodItems.forEach((foodItem, index) => {
         if (coins >= totalCost) {
             coins -= totalCost; // Deduct the coins for the total cost
             foodBuff += foodBuffs[index] * quantity; // Apply the food buff multiplied by the quantity
-            foodPrices[index] *= 1.05; // Zwiększamy cenę jedzenia o 5%
+            foodPrices[index] *= 1.01; // Zwiększamy cenę jedzenia o 5%
             
             // Zaktualizuj wyświetlaną cenę
             foodSpan.textContent = `${foodItem.querySelector('img').alt} [${formatCoins(Math.floor(foodPrices[index]))} Buszonki] Buszonki +${foodBuffs[index]}`;
