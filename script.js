@@ -205,8 +205,8 @@ function saveProgress() {
         currentSkin,
         unlockedSkins,
         activeHelpers,
-        lastOnline: Date.now(),
-        foodPrices, // Zapisujemy aktualne ceny jedzenia
+        foodPrices, // Dodanie zapisanych cen jedzenia
+        lastOnline: Date.now()
     };
     const sanitizedId = userId.replace(/\./g, '_');
     const userRef = ref(db, `leaderboard/${sanitizedId}`);
@@ -546,7 +546,7 @@ async function loadProgressFromFirebase() {
                     currentSkin = savedProgress.currentSkin || 0;
                     unlockedSkins = savedProgress.unlockedSkins || [true, false, false, false, false, false, false];
                     activeHelpers = savedProgress.activeHelpers || [false];
-                    foodPrices = savedProgress.foodPrices || [100, 2500, 10000, 300000, 2500000, 50000000]; // Wczytujemy ceny jedzenia
+                    foodPrices = savedProgress.foodPrices || [100, 2500, 10000, 300000, 2500000, 50000000]; // Odczytaj zapisane ceny
                     updateUI();
                 }
             } else {
