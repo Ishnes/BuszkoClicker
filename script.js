@@ -358,7 +358,7 @@ foodItems.forEach((foodItem, index) => {
             foodBuff += foodBuffs[index] * quantity;
 
             // Zwiększanie ceny jedzenia
-            foodPrices[index] *= Math.pow(1.05, quantity);
+            foodPrices[index] *= Math.pow(1.01, quantity);
 
             // Aktualizacja wyświetlanej ceny
             const foodSpan = foodItem.querySelector('span');
