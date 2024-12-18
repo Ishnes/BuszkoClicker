@@ -300,7 +300,7 @@ hr {
 /* Active Helpers */
 .active-helpers {
     position: absolute;
-    top: 70%;
+    top: 65%;
     left: 60%;
     transform: translate(100%, -50%);
     display: flex;
@@ -437,7 +437,7 @@ img
     }
 	.active-helpers {
     position: absolute;
-    top: 80%;
+    top: 70%;
     left: 60%;
     transform: translate(100%, -50%);
     display: flex;
