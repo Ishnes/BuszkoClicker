@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Buszko Clicker</title>
+    <link rel="icon" href="B.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="waterfall"></div>
     <div class="logo">
         <h1 class="neon-text">Buszko Clicker</h1>
-        <h5>Pre-alpha.v.0.8.2</h5>
-	<div id="userInfo"></div>
+        
+	<Button onclick="Iopen()" id="openinstrukcja">?</Button>
+	<div id="instrukcja">
+	<h5>Pre-alpha.v.0.8.3</h5>
+	<h4>Instrukcja</h4>
+	<p> 
+	Klikaj w buszko i zbieraj buszonkow
+	Kupuj jedzenie aby karmić Buszko i dostawać więcej buszonków,
+	każdy zakup jedzenia zwiększa jego cenę o 1%.
+	Kupuj także skiny oraz pomocników aby generować większe przychody buszonków.
+	Aby wpisać się do tabeli wyników zaloguj się przez konto google.
+	</p>
+	<Button onclick="Iclose()" id="closeinstrukcja">Zamknij</Button>
+	</div>
     </div>
     <div class="BuszkoClicker">
         <div class="info">
@@ -226,5 +239,6 @@
     
 	<script type="module" src="script.js"></script>
     <script src="script2.js" ></script>
+	<script src="script3.js" ></script>
 </body>
 </html>
