@@ -33,4 +33,4 @@ function neontoggle()
 	
 }
 
-neon.addEventListener("click", neontoggle)
+neon.addEventListener("click", neontoggle);
