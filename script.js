@@ -227,6 +227,7 @@ function loadProgress() {
         baseCoinsPerClick = progress.baseCoinsPerClick || 1;
         coinsPerClick = baseCoinsPerClick;
         foodBuff = progress.foodBuff || 0;
+	foodPrices = progress.foodPrices;
         currentSkin = progress.currentSkin || 0;
         unlockedSkins = progress.unlockedSkins || [true, false, false, false, false, false, false];
         activeHelpers = progress.activeHelpers || [false];
