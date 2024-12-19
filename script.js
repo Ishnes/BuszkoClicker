@@ -52,11 +52,11 @@ const skinPrices =
     130000000000000000000000000000
 ];
 const skinMultipliers = [1, 2, 4, 10, 20, 50, 100, 250, 500, 1000, 1200, 1400, 1600, 1800];
-const foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
+let foodPrices = [100, 2500, 10000, 300000, 2500000, 50000000];
 const foodBuffs = [1, 5, 10, 25, 100, 250];
 const helperPrices = [225000, 1000000, 500000000];
 const helperEarnings = [0.01, 0.05, 0.10]; // 10% of current Buszonki per click
-const nickInput = document.querySelector('#playerNick');
+let nickInput = document.querySelector('#playerNick');
 const songs = [
     { id: 'song1', cost: 0, src: 'bones.mp3', unlocked: true }, // Free song, already unlocked
     { id: 'song2', cost: 9999, src: 'enemy.mp3', unlocked: false },];
