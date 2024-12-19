@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
 }
 
-.neon-text {
+#neon {
             font-family: Arial, sans-serif;
             font-size: 55px; /* Rozmiar czcionki */
             color: #fff; /* Podstawowy kolor tekstu (turkusowy) */
@@ -37,6 +37,10 @@ body {
                 0 0 100px #faf; /* Wielopoziomowy cień dla efektu neonu */
             text-transform: uppercase; /* Tekst dużymi literami */
             letter-spacing: 1px; /* Rozstawienie liter */
+}
+
+#neon:hover {
+            cursor:pointer;
 }
 
 #openinstrukcja
