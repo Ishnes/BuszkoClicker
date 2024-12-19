@@ -7,7 +7,7 @@ function Iopen()
 function Iclose()
 {
 	instrukcja.style.display="none";
-	
+}
 const neon = document.getElementById("neon");
 
 function lightoff()
