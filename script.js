@@ -570,9 +570,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (savedUserId) {
         userId = savedUserId;  // Set userId from localStorage
         loadProgressFromFirebase();  // Load the progress if the user is already logged in
-    } else {
-        await initializeAuth();  // Only call initializeAuth if userId is not found in localStorage
-    }
+    } 
 });
 // Sprawdzanie istnienia elementów przed przypisaniem zdarzenia
 document.addEventListener("DOMContentLoaded", () => {
