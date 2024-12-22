@@ -19,11 +19,13 @@ body {
     color: #ffffff; /* Biały tekst */
     background-color: #673ab7; /* Fioletowe tło */
     width: 500px;
-    padding: 10px;
+    
+    padding: 5px;
     border-radius: 10px;
 }
 
 #neon {
+			margin-top:1%;
             font-family: Arial, sans-serif;
             font-size: 55px; /* Rozmiar czcionki */
             color: #fff; /* Podstawowy kolor tekstu (turkusowy) */
@@ -46,6 +48,7 @@ body {
 #openinstrukcja
 {
 	border-radius:50%;
+	margin-top:-100px;
 }
 
 #openinstrukcja:hover
@@ -93,7 +96,8 @@ body {
 .clicker {
     width: 300px;
     height: 300px;
-    border: 2px solid white;
+    border: 2px solid #fff;
+    box-shadow: 1px 1px 10px #faf;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -106,6 +110,7 @@ body {
 
 /* Shop Section */
 .sklep {
+    box-shadow: 1px 1px 10px #faf;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -114,7 +119,7 @@ body {
     width: 500px;
     background-color: #1e1e1e; /* Ciemnoszare tło */
     color: #ffffff; /* Biały tekst */
-    border: 2px solid #673ab7; /* Fioletowa ramka */
+    border: 2px solid #fff; /* Fioletowa ramka */
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -375,6 +380,13 @@ hr {
     filter: none;
 	
 }
+
+.motywySection
+{
+    width: 500px;
+}
+
+
 
 .leaderboard{
 	border:2px #673ab7 solid;
